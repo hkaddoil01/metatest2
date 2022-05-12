@@ -1,0 +1,28 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+// Define your own datamodels here and run `yarn redwood prisma migrate dev`
+// to create migrations for them and apply to your dev DB.
+model Fragment {
+  id           Int      @id @default(autoincrement())
+  title        String
+  body         String
+  fragmentTime String
+  attachments  File[]
+  createdAt    DateTime @default(now())
+}
+
+model File {
+  id         Int       @id @default(autoincrement())
+  url        String
+  filetype   String
+  fragment   Fragment? @relation(fields: [fragmentId], references: [id])
+  fragmentId Int?
+}
