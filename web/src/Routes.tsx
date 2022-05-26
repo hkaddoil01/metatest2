@@ -8,12 +8,33 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route, Set } from '@redwoodjs/router'
+import TagsLayout from 'src/layouts/TagsLayout'
+import PostsLayout from 'src/layouts/PostsLayout'
+import MediaFilesLayout from 'src/layouts/MediaFilesLayout'
 import FragmentsLayout from 'src/layouts/FragmentsLayout'
 import TimelineLayout from './layouts/TimelineLayout/TimelineLayout'
 
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={TagsLayout}>
+        <Route path="/tags/new" page={TagNewTagPage} name="newTag" />
+        <Route path="/tags/{id:Int}/edit" page={TagEditTagPage} name="editTag" />
+        <Route path="/tags/{id:Int}" page={TagTagPage} name="tag" />
+        <Route path="/tags" page={TagTagsPage} name="tags" />
+      </Set>
+      <Set wrap={PostsLayout}>
+        <Route path="/posts/new" page={UploadPage} name="newPost" />
+        <Route path="/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
+        <Route path="/posts/{id:Int}" page={PostPostPage} name="post" />
+        <Route path="/posts" page={PostPostsPage} name="posts" />
+      </Set>
+      <Set wrap={MediaFilesLayout}>
+        <Route path="/media-files/new" page={MediaFileNewMediaFilePage} name="newMediaFile" />
+        <Route path="/media-files/{id:Int}/edit" page={MediaFileEditMediaFilePage} name="editMediaFile" />
+        <Route path="/media-files/{id:Int}" page={MediaFileMediaFilePage} name="mediaFile" />
+        <Route path="/media-files" page={MediaFileMediaFilesPage} name="mediaFiles" />
+      </Set>
       <Route path="/content" page={ContentPage} name="content" />
       <Route path="/grid" page={GridPage} name="grid" />
       <Route path="/upload" page={UploadPage} name="upload" />

@@ -9,6 +9,13 @@ generator client {
   binaryTargets = "native"
 }
 
+enum TagType {
+  CHARACTER
+  EVENT
+  PLACE
+  OTHER
+}
+
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 // to create migrations for them and apply to your dev DB.
 model Fragment {
@@ -26,4 +33,31 @@ model File {
   filetype   String
   fragment   Fragment? @relation(fields: [fragmentId], references: [id])
   fragmentId Int?
+}
+
+model Post {
+  id              Int @id @default(autoincrement())
+  title           String
+  author          String
+  body            String
+  mfile           MediaFile?
+  tags            Tag[]
+  published       Boolean    @default(false)
+  createdAt       DateTime   @default(now())
+  publisheddAt    DateTime?
+}
+
+model Tag {
+  id     Int @id @default(autoincrement())
+  type   TagType
+  name   String @unique
+  posts  Post[]
+}
+
+model MediaFile {
+  id      Int    @id @default(autoincrement())
+  title   String
+  url     String
+  post    Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId  Int
 }

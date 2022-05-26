@@ -1,9 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-import NewPost from 'src/components/Post/NewPost'
-import TagPostsStories from 'src/components/TagPosts/TagPosts.stories'
-import TagPostsCell from 'src/components/TagPostsCell/TagPostsCell'
-
 
 const UploadPage = () => {
   return (
@@ -11,7 +7,13 @@ const UploadPage = () => {
       <MetaTags title="Upload" description="Upload page" />
 
       <h1>UploadPage</h1>
-      <TagPostsCell />
+      <p>
+        Find me in <code>./web/src/pages/UploadPage/UploadPage.tsx</code>
+      </p>
+      <p>
+        My default route is named <code>upload</code>, link to me with `
+        <Link to={routes.upload()}>Upload</Link>`
+      </p>
     </>
   )
 }

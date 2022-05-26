@@ -1,0 +1,49 @@
+.tag-item{
+  background-color: lightgrey;
+  display: inline-block;
+  padding: 2px 0px;
+  border-radius: 20px;
+  margin:2px;
+  font-size: 10px;
+  min-width: 300px;
+}
+
+.tag-item .tag-type {
+  border-radius: 20px 0px 0px 20px;
+  padding:2px 10px 2px 10px;;
+  color: white;
+}
+
+.tag-item .tag-type.CHARACTER {
+  background-color: coral;
+}
+
+.tag-item .tag-type.EVENT {
+  background-color: limegreen;
+}
+
+.tag-item .tag-type.PLACE {
+  background-color: blueviolet;
+}
+
+.tag-item .tag-type.OTHER {
+  background-color: burlywood;
+}
+
+.tag-item .tag-value {
+  padding: 2px 10px;
+}
+
+.taginputcontainer {
+  display: flex;
+  padding: 10px 10px 10px 0px;
+}
+
+.taginputcontainer .typeinput {
+  padding: 10px 10px 10px 0px;
+}
+
+.taginputcontainer .valueinput {
+  padding: 10px 10px 10px 0px;
+  min-width: 300px;
+}
